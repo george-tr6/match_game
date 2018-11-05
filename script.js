@@ -50,6 +50,8 @@ let matches = 0;
 let attempts = 0;
 let accuracy = 0;
 let games_played = 0;
+let total_possible_matches = 9;
+let match_counter = 0; 
 
 const game = document.getElementById('game');
 const grid = document.createElement('section');
@@ -115,20 +117,48 @@ grid.addEventListener('click', event => {
       clicked.parentNode.classList.add('selected');
     } else {
       secondGuess = clicked.parentNode.dataset.name;
+      attempts = attempts + 1;
       console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
     }
 
     if (firstGuess && secondGuess) {
+
       if (firstGuess === secondGuess) {
+        matches = matches + 1;
+        match_counter = match_counter + 1;
         setTimeout(match, delay);
+
       }
       setTimeout(resetGuesses, delay);
+ 
     }
+
     previousTarget = clicked;
   }
 
+  dispalyStats();
+
 });
+
+// var guessAttempts = document.getElementsByClassName('value');
+
+const dispalyStats = () => {
+document.querySelector('.games-played .value').innerHTML = games_played;
+document.querySelector('.attempts .value').innerHTML = attempts;
+document.querySelector('.accuracy .value').innerHTML = accuracy;
+accuracy = (matches / attempts)*100;
+}
+
+// var statsGroup = document.getElementById('stats');
+// statsGroup.className = 'stats-container';
+// statsGroup.appendChild(document.createTextNode('STATS '));
+// statsGroup.appendChild(document.createTextNode('Games Played: '));
+// statsGroup.appendChild(document.createTextNode('Attempts: '));
+// statsGroup.appendChild(document.createTextNode(attempts));
+// statsGroup.appendChild(document.createTextNode('Accuracy: '));
+
+// document.getElementById('stats').firstChild.nextSibling.nodeValue = 'five';
 
 
 
