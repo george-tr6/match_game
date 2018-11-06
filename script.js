@@ -175,10 +175,11 @@ const resetButtonClickHandler = () => {
 }
 
 const resetButtonEventListener = () => {
-  document.getElementsByClassName('.btn').addEventListener('click', event => {
-    const btnClicked = event.target;
-  });
+  console.log('reset button');
+  document.getElementsByClassName('.btn .reset').addEventListener('click',resetButtonClickHandler );
 }
+
+
 
 // var guessAttempts = document.getElementsByClassName('value');
 
