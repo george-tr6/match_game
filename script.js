@@ -113,11 +113,12 @@ grid.addEventListener('click', event => {
     count++;
     if (count === 1) {
       firstGuess = clicked.parentNode.dataset.name;
+      attempts = attempts + 1;
       console.log(firstGuess);
       clicked.parentNode.classList.add('selected');
     } else {
       secondGuess = clicked.parentNode.dataset.name;
-      attempts = attempts + 1;
+      // attempts = attempts + 1;
       console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
     }
@@ -127,6 +128,13 @@ grid.addEventListener('click', event => {
       if (firstGuess === secondGuess) {
         matches = matches + 1;
         match_counter = match_counter + 1;
+        // accuracy = null;
+        if(match_counter === total_possible_matches){
+          // alert('You Won!');
+          // showModal();
+          games_played = games_played + 1;
+          console.log('You Won!')
+      }
         setTimeout(match, delay);
 
       }
@@ -141,14 +149,38 @@ grid.addEventListener('click', event => {
 
 });
 
-// var guessAttempts = document.getElementsByClassName('value');
+
 
 const dispalyStats = () => {
 document.querySelector('.games-played .value').innerHTML = games_played;
 document.querySelector('.attempts .value').innerHTML = attempts;
-document.querySelector('.accuracy .value').innerHTML = accuracy;
 accuracy = (matches / attempts)*100;
+document.querySelector('.accuracy .value').innerHTML = accuracy.toFixed() + '%';
+
 }
+
+const resetStats = () => {
+  accuracy = 0;
+  matches = 0;
+  attempts = 0;
+  match_counter = 0;
+}
+
+const resetButtonClickHandler = () => {
+  games_played = games_played + 1;
+  resetStats();
+  displayStats();
+  //reset and randomize cards needed
+  // remove modal if active
+}
+
+const resetButtonEventListener = () => {
+  document.getElementsByClassName('.btn').addEventListener('click', event => {
+    const btnClicked = event.target;
+  });
+}
+
+// var guessAttempts = document.getElementsByClassName('value');
 
 // var statsGroup = document.getElementById('stats');
 // statsGroup.className = 'stats-container';
