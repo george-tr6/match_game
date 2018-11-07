@@ -106,11 +106,11 @@ body {
   padding-right: 5px;
 }
 
-.btn {
+#btn {
   padding: 5px 20px;
   border-radius: 12px;
 }
-.btn:hover {
+#btn:hover {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   background-color: #5a3fe9;

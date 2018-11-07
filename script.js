@@ -145,18 +145,17 @@ grid.addEventListener('click', event => {
     previousTarget = clicked;
   }
 
-  dispalyStats();
+  displayStats();
 
 });
 
 
 
-const dispalyStats = () => {
+const displayStats = () => {
 document.querySelector('.games-played .value').innerHTML = games_played;
 document.querySelector('.attempts .value').innerHTML = attempts;
 accuracy = (matches / attempts)*100;
 document.querySelector('.accuracy .value').innerHTML = accuracy.toFixed() + '%';
-
 }
 
 const resetStats = () => {
@@ -170,16 +169,22 @@ const resetButtonClickHandler = () => {
   games_played = games_played + 1;
   resetStats();
   displayStats();
+  restartGame();
   //reset and randomize cards needed
   // remove modal if active
 }
 
-const resetButtonEventListener = () => {
-  console.log('reset button');
-  document.getElementsByClassName('.btn .reset').addEventListener('click',resetButtonClickHandler );
+let button = document.getElementById("btn");
+button.addEventListener("click", function(event){
+  resetButtonClickHandler(event.target);
+  console.log('reset button')
+});
+
+restartGame = () => {
+
+
+  console.log('restart game')
 }
-
-
 
 // var guessAttempts = document.getElementsByClassName('value');
 
