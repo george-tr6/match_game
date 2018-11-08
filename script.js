@@ -132,6 +132,7 @@ grid.addEventListener('click', event => {
         if(match_counter === total_possible_matches){
           // alert('You Won!');
           // showModal();
+          toggleModal();
           games_played = games_played + 1;
           console.log('You Won!')
       }
@@ -154,7 +155,12 @@ grid.addEventListener('click', event => {
 const displayStats = () => {
 document.querySelector('.games-played .value').innerHTML = games_played;
 document.querySelector('.attempts .value').innerHTML = attempts;
-accuracy = (matches / attempts)*100;
+if (attempts !== 0) {
+  accuracy = (matches / attempts)*100;
+ }else {
+  attempts = 0;
+ }
+// accuracy = (matches / attempts)*100;
 document.querySelector('.accuracy .value').innerHTML = accuracy.toFixed() + '%';
 }
 
@@ -171,7 +177,6 @@ const resetButtonClickHandler = () => {
   displayStats();
   restartGame();
   //reset and randomize cards needed
-  // remove modal if active
 }
 
 let button = document.getElementById("btn");
@@ -186,20 +191,25 @@ restartGame = () => {
   console.log('restart game')
 }
 
-// var guessAttempts = document.getElementsByClassName('value');
-
-// var statsGroup = document.getElementById('stats');
-// statsGroup.className = 'stats-container';
-// statsGroup.appendChild(document.createTextNode('STATS '));
-// statsGroup.appendChild(document.createTextNode('Games Played: '));
-// statsGroup.appendChild(document.createTextNode('Attempts: '));
-// statsGroup.appendChild(document.createTextNode(attempts));
-// statsGroup.appendChild(document.createTextNode('Accuracy: '));
-
-// document.getElementById('stats').firstChild.nextSibling.nodeValue = 'five';
 
 
 
-// var newdiv = document.createElement("DIV");
-// newdiv.appendChild(document.createTextNode("some text"));
-// grid.appendChild(newdiv);
+// Modal Section
+
+var modal = document.querySelector(".modal");
+var trigger = document.querySelector(".trigger");
+var closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+trigger.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);

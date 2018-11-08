@@ -13,7 +13,7 @@
 <body>
     
     <h1 class="title">Memory Match</h1>
-    <!-- <div id='stats'></div> -->
+    <!-- Stats -->
     <div class="stats-container">
         <div class="stats-title">STATS:</div>
           <div class="games-played">
@@ -28,11 +28,22 @@
               <div class="label">Accuracy:</div>
               <div class="value">0%</div>
           </div>
-          <button id="btn">Reset Game</button>
-      </div>
+        <button id="btn">Reset Game</button>
+    </div>
 
-      <div id='game'></div>
-      
+    <!-- Main game section -->
+
+    <div id='game'></div>
+
+    <!-- Modal Start -->
+    <button class="trigger">Click here to trigger the modal!</button>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h1>Congratulations you're a winner 🎉🎉!</h1>
+        </div>
+    </div>
+    
 
     <script src="script.js"></script>
 
