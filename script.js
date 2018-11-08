@@ -36,10 +36,6 @@ const cardsArray = [{
     },
 ];
 
-const gameGrid = cardsArray
-  .concat(cardsArray)
-  .sort(() => 0.5 - Math.random());
-
 let firstGuess = '';
 let secondGuess = '';
 let count = 0;
@@ -58,24 +54,32 @@ const grid = document.createElement('section');
 grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
-gameGrid.forEach(item => {
-  const { name, img } = item;
+const createCards = () => {
+  const gameGrid = cardsArray
+    .concat(cardsArray)
+    .sort(() => 0.5 - Math.random());
 
-  const card = document.createElement('div');
-  card.classList.add('card');
-  card.dataset.name = name;
+  gameGrid.forEach(item => {
+    const { name, img } = item;
+  
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.name = name;
+  
+    const front = document.createElement('div');
+    front.classList.add('front');
+  
+    const back = document.createElement('div');
+    back.classList.add('back');
+    back.style.backgroundImage = `url(${img})`;
+  
+    grid.appendChild(card);
+    card.appendChild(front);
+    card.appendChild(back);
+  });
+}
 
-  const front = document.createElement('div');
-  front.classList.add('front');
-
-  const back = document.createElement('div');
-  back.classList.add('back');
-  back.style.backgroundImage = `url(${img})`;
-
-  grid.appendChild(card);
-  card.appendChild(front);
-  card.appendChild(back);
-});
+createCards();
 
 const match = () => {
   const selected = document.querySelectorAll('.selected');
@@ -186,8 +190,12 @@ button.addEventListener("click", function(event){
 });
 
 restartGame = () => {
+  let gameGrid = document.querySelector('.grid');
+  while(gameGrid.firstChild) {
+    gameGrid.removeChild(gameGrid.firstChild);
+  }
 
-
+  createCards();
   console.log('restart game')
 }
 
