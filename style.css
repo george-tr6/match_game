@@ -9,7 +9,7 @@
 body {
   margin: 20px 0;
   background: #6589F9;
-  background-image: url('Images/clubhouse.jpg')
+  background-image: url('images/clubhouse.jpg')
 }
 
 .grid {
@@ -42,12 +42,12 @@ body {
 
 .front {
   z-index: 2;
-  background: #FAB942 url('Images/Disney-300x300.jpg') no-repeat center center / contain;
+  background: #FAB942 url('images/Disney-300x300.jpg') no-repeat center center / contain;
 }
 
 .back {
   transform: rotateY(180deg);
-  background-color: url('Images/clubhouse.jpg');
+  background-color: url('images/clubhouse.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -58,7 +58,7 @@ body {
 }
 
 .match .front {
-  background: url('Images/clubhouse.jpg') !important;
+  background: url('images/clubhouse.jpg') !important;
 }
 
 
