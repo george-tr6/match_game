@@ -118,12 +118,9 @@ grid.addEventListener('click', event => {
     if (count === 1) {
       firstGuess = clicked.parentNode.dataset.name;
       attempts = attempts + 1;
-      console.log(firstGuess);
       clicked.parentNode.classList.add('selected');
     } else {
       secondGuess = clicked.parentNode.dataset.name;
-      // attempts = attempts + 1;
-      console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
     }
 
@@ -132,21 +129,14 @@ grid.addEventListener('click', event => {
       if (firstGuess === secondGuess) {
         matches = matches + 1;
         match_counter = match_counter + 1;
-        // accuracy = null;
         if(match_counter === total_possible_matches){
-          // alert('You Won!');
-          // showModal();
           toggleModal();
           games_played = games_played + 1;
-          console.log('You Won!')
       }
         setTimeout(match, delay);
-
       }
       setTimeout(resetGuesses, delay);
- 
     }
-
     previousTarget = clicked;
   }
 
@@ -164,7 +154,6 @@ if (attempts !== 0) {
  }else {
   attempts = 0;
  }
-// accuracy = (matches / attempts)*100;
 document.querySelector('.accuracy .value').innerHTML = accuracy.toFixed() + '%';
 }
 
@@ -180,13 +169,11 @@ const resetButtonClickHandler = () => {
   resetStats();
   displayStats();
   restartGame();
-  //reset and randomize cards needed
 }
 
 let button = document.getElementById("btn");
 button.addEventListener("click", function(event){
   resetButtonClickHandler(event.target);
-  console.log('reset button')
 });
 
 restartGame = () => {
@@ -194,11 +181,8 @@ restartGame = () => {
   while(gameGrid.firstChild) {
     gameGrid.removeChild(gameGrid.firstChild);
   }
-
   createCards();
-  console.log('restart game')
 }
-
 
 
 

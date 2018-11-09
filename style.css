@@ -73,9 +73,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* border: 2px solid white;
-    border-radius: 20px; */
-    
 }
 
 .title{
