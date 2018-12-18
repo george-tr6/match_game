@@ -61,6 +61,48 @@ body {
   background: url('images/clubhouse.jpg') !important;
 }
 
+/* media queries  */
+
+@media screen and (max-width: 970px){
+  .card,
+  .back,
+  .front {
+    height: 130px;
+    width: 130px;
+  }
+}
+@media screen and (max-width: 940px){
+  .card,
+  .back,
+  .front {
+    height: 125px;
+    width: 125px;
+  }
+}
+@media screen and (max-width: 825px){
+  .card,
+  .back,
+  .front {
+    height: 110px;
+    width: 110px;
+  }
+}
+@media screen and (max-width: 720px){
+  .card,
+  .back,
+  .front {
+    height: 100px;
+    width: 100px;
+  }
+}
+@media screen and (max-width: 660px){
+  .card,
+  .back,
+  .front {
+    height: 150px;
+    width: 150px;
+  }
+}
 
 /* Stats styling */
 
